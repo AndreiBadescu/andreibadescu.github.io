@@ -66,7 +66,7 @@ function windowResized() {
         textbox.width += textWidth('A');
     }
 
-	adjust_button(clear_button);
+    adjust_button(clear_button);
     adjust_button(submit_button);
     adjust_button(help_button);
     clear_button.position((windowWidth - textbox.unstretched)/2 + textbox.unstretched / 6 - clear_button.width / 2, windowHeight / 5);
