@@ -162,10 +162,11 @@ function DFS(root, lvl) {
 }
 
 function displayNode(root, lvl, parentX, parentY, ST, DR) {
-	if(root.data == null) {
-		alert('ERROR!');
+	if(root.data == null)
 		return false;
-	}
+
+	if (root.children.length > 2)
+		return false;
 
 	++displayed_nodes[lvl];
 
@@ -223,6 +224,7 @@ function displayTree(root) {
 	pop();
 
 	if (no_error == false) {
-		draw();
+		alert('ERROR!');
+		draw(); // this earases the displayed tree
 	}
 }
