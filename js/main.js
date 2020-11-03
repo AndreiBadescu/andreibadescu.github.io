@@ -32,14 +32,21 @@ function setup() {
     Create_help_button();
 }
 
+function resizeTexbox() {
+	while (textWidth(input) >= textbox.width) {
+        textbox.width += textWidth('A');
+    }
+
+    while (textbox.width > textWidth(input + 'A') && textbox.width > textbox.unstretched) {
+    	textbox.width -= textWidth('A');
+    }
+}
+
 function draw() {
     clear();
     background(113, 179, 245);
 
-    while (textWidth(input) >= textbox.width) {
-        textbox.width += textWidth('A');
-    }
-
+    resizeTexbox();
     textbox.display();
     showInput();
 
@@ -66,19 +73,20 @@ function windowResized() {
         textbox.width += textWidth('A');
     }
 
-    adjust_button(clear_button);
+	adjust_button(clear_button);
     adjust_button(submit_button);
     adjust_button(help_button);
     clear_button.position((windowWidth - textbox.unstretched)/2 + textbox.unstretched / 6 - clear_button.width / 2, windowHeight / 5);
     submit_button.position((windowWidth - textbox.unstretched)/2 + textbox.unstretched / 2 - submit_button.width / 2, windowHeight / 5);
     help_button.position((windowWidth - textbox.unstretched)/2 + textbox.unstretched * 5 / 6 - help_button.width / 2, windowHeight / 5);
     
+
     draw();
 }
 
 function adjust_button(btn) {
-    btn.size(textbox.unstretched / 4, textbox.height / 1.3);
-    btn.style("font-size", btn.width / 5 + "px");
+	btn.size(textbox.unstretched / 4, textbox.height / 1.3);
+	btn.style("font-size", btn.width / 5 + "px");
 }
 
 function showInput() {
@@ -91,11 +99,11 @@ function showInput() {
 
 
 function keyTyped() {
-    if (help) {
-	help = false;
-	draw();
-	return false;
-    }
+	if (help) {
+		help = false;
+		draw();
+		return false;
+	}
 
     if (key >= 'A' && key <= 'Z') { // A-Z
     	lastInput.push(input);
@@ -112,24 +120,24 @@ function keyTyped() {
     else switch (key) {
         case '1':
         	lastInput.push(input);
-            	input += '¬';
-            	break;
+            input += '¬';
+            break;
         case '2':
         	lastInput.push(input);
-            	input += '∧';
-            	break;
+            input += '∧';
+            break;
         case '3':
         	lastInput.push(input);
-            	input += '∨';
-            	break;
+            input += '∨';
+            break;
         case '4':
         	lastInput.push(input);
-            	input += '⇒';
-            	break;
+            input += '⇒';
+            break;
         case '5':
         	lastInput.push(input);
-            	input += '⇔';
-            	break;
+            input += '⇔';
+            break;
         case '9':
         	lastInput.push(input);
         	input += '(';
@@ -139,7 +147,7 @@ function keyTyped() {
         	input += ')';
         	break;
         default:
-        	return false;
+            return false;
     }
 
     draw();
@@ -147,20 +155,15 @@ function keyTyped() {
 }
 
 function keyPressed() {
-    if(help) {
+	if(help) {
     	help = false;
     	draw();
     	return false;
-    }
+	}
 
     if (keyCode == BACKSPACE) {
     	lastInput.push(input);
         input = input.slice(0, -1);
-        while (textWidth(input + 'A') >= textbox.width) {
-        	textbox.width += textWidth('A');
-        }
-        if(textbox.width > textbox.unstretched)
-        	textbox.width -= textWidth('A');
         draw();
     }
     else if (keyCode == DELETE) {
@@ -175,24 +178,24 @@ function keyPressed() {
     			input = lastInput.pop();
     		draw();
     	}
-    }
+	}
 }
 
 function clear_textbox() {
-    lastInput.push(input);
-    input = "";
-    textbox.width = textbox.unstretched;
-    draw();
+	lastInput.push(input);
+	input = "";
+	textbox.width = textbox.unstretched;
+	draw();
 }
 
 function show_help() {
-    help = true;
-    draw();
+	help = true;
+	draw();
 }
 
 function Create_clear_button() {
-    clear_button = createButton('CLEAR');
-    clear_button.mousePressed(clear_textbox);
+	clear_button = createButton('CLEAR');
+	clear_button.mousePressed(clear_textbox);
     clear_button.size(textbox.unstretched / 4, textbox.height / 1.3);
     clear_button.position((windowWidth - textbox.unstretched)/2 + textbox.unstretched / 6 - clear_button.width / 2, windowHeight / 5);
     clear_button.style("font-size", clear_button.width / 5 + "px");
@@ -203,8 +206,8 @@ function Create_clear_button() {
 }
 
 function Create_submit_button() {
-    submit_button = createButton('SUBMIT');
-    submit_button.mousePressed(check_input);
+	submit_button = createButton('SUBMIT');
+	submit_button.mousePressed(check_input);
     submit_button.size(textbox.unstretched / 4, textbox.height / 1.3);
     submit_button.position((windowWidth - textbox.unstretched)/2 + textbox.unstretched / 2 - submit_button.width / 2, windowHeight / 5);
     submit_button.style("font-size", submit_button.width / 5 + "px");
@@ -215,8 +218,8 @@ function Create_submit_button() {
 }
 
 function Create_help_button() {
-    help_button = createButton('HELP');
-    help_button.mousePressed(show_help);
+	help_button = createButton('HELP');
+	help_button.mousePressed(show_help);
     help_button.size(textbox.width / 4, textbox.height / 1.3);
     help_button.position((windowWidth - textbox.unstretched)/2 + textbox.unstretched * 5 / 6 - help_button.width / 2, windowHeight / 5);
     help_button.style("font-size", help_button.width / 5 + "px");
@@ -229,19 +232,19 @@ function Create_help_button() {
 document.body.onpaste = function(e) {
     var pastedText = undefined;
 
-    if (window.clipboardData && window.clipboardData.getData) { // IE
+  	if (window.clipboardData && window.clipboardData.getData) { // IE
     	pastedText = window.clipboardData.getData('Text');
-    } 
-    else if (e.clipboardData && e.clipboardData.getData) {
+  	} 
+  	else if (e.clipboardData && e.clipboardData.getData) {
     	pastedText = e.clipboardData.getData('text/plain');
-    }
+  	}
 
-    if(pastedText == undefined)
-  	return false;
+  	if(pastedText == undefined)
+  		return false;
 
-    pastedText = pastedText.toUpperCase();
+  	pastedText = pastedText.toUpperCase();
  
-    let tempInput = "";
+ 	let tempInput = "";
     for (i of pastedText) {
     	if (i == ' ')
     		continue;
@@ -255,19 +258,19 @@ document.body.onpaste = function(e) {
     	else switch (i) {
         	case '1':
         		tempInput += '¬';
-            		break;
+            	break;
         	case '2':
         		tempInput += '∧';
-            		break;
+            	break;
         	case '3':
         		tempInput += '∨';
-            		break;
+            	break;
         	case '4':
         		tempInput +='⇒';
-            		break;
+            	break;
         	case '5':
         		tempInput += '⇔';
-            		break;
+            	break;
         	case '9':
         		tempInput += '(';
         		break;
