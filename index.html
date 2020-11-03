@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formule Propozitionale</title>
+    <meta name="author" content="Andrei Badescu">
+    <meta name="description" content="Formule Propozitionale">
+    <link href="https://use.typekit.net/dfm6mfk.css">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="js/p5.js"></script>
+    <script src="js/tree.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/parser.js" defer></script>
+</head>
+
+<body onpaste="PasteToInput()">
+    <div id="help-window" class="hidden">
+        <p>
+            Pentru a introduce o formula propozitionala tastati litere (A-Z) sau caractere specificate mai jos.<br><br>
+            Lista conectori logici (tastarea unei cifre de mai jos va insera un conector logic):<br>
+            &nbsp&nbsp1 &nbsp= ¬ (negatie)<br>
+            &nbsp&nbsp2 &nbsp= ∧ (conjunctie)<br>
+            &nbsp&nbsp3 &nbsp= ∨ (disjunctie)<br>
+            &nbsp&nbsp4 &nbsp= ⇒ (implicatie)<br>
+            &nbsp&nbsp5 &nbsp= ⇔ (echivalenta)<br>
+            &nbsp&nbsp9* = (<br>
+            10* = )<br><br>
+            Lista comenzi:<br>
+            DELETE = sterge formula porpozitionala introdusa<br>
+            ENTER = executa programul<br>
+            BACKSPACE = sterge ultimul caracter introdus<br>
+            CTRL-Z = undo<br>
+            CTRL-V = paste text<br>
+        </p>
+        <p style="text-align: center">
+            <b>Press any key to close</b>
+        </p>
+    </div>
+</body>
+
+</html>

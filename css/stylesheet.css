@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    display: block;
+}
+
+button:focus {
+    outline: 0;
+}
+
+button:hover {
+	 background-color: #c2c2c2;
+}
+
+.hidden {
+	display: none !important;
+}
+
+#help-window {
+	top: 2vh;
+	left: 0;
+	right: 0 !important;
+	margin-left: 5vw;
+	margin-right: 5vw;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	position: fixed;
+	width: calc(88vw - 8px);
+	z-index: 1;
+    background-color: white;
+    border: 4px solid black;
+    border-radius: 20px;
+    font-size: 3vh;
+    font-family: myriad-pro, sans-serif !important;
+	font-weight: 500;
+	font-style: normal;
+}
