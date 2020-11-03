@@ -1,4 +1,5 @@
 var cnt, leaf_nodes, root, currentNode, depth, breadth, displayed_nodes, circles, tree_portion;
+var circle_size = 75;
 
 function Node(data, parent, children) {
 	this.data = data;
@@ -199,10 +200,10 @@ function displayTree(root) {
 	circles = [];
 	DFS(root, 1);
 
-	tree_portion = windowHeight - (80 + textbox.height / 1.3 + windowHeight / 5);
+	tree_portion = windowHeight - (circle_size + textbox.height / 1.3 + windowHeight / 5);
 
 	push();
-	translate(0, 80 + textbox.height / 1.3 + windowHeight / 5);
+	translate(0, circle_size + textbox.height / 1.3 + windowHeight / 5);
 	// (root, lvl, parentX, parentY, ST, DR)
 	let no_error = true;
 	if (leaf_nodes > 10 || windowWidth < 1000)
@@ -214,10 +215,10 @@ function displayTree(root) {
 
 	for (i of circles) {
 		fill(255);
-		circle(i.x, i.y, 80);
+		circle(i.x, i.y, circle_size );
 		fill(0);
-		textSize(80 / 1.5);
-		text(i.val, i.x, i.y + 80/5);
+		textSize(circle_size / 1.5);
+		text(i.val, i.x, i.y + circle_size / 5);
 	}
 	pop();
 
