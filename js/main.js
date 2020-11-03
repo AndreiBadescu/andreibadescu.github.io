@@ -113,20 +113,20 @@ function keyTyped() {
     else switch (key) {
         case '1':
         	lastInput.push(input);
-            input += '¬';
-            break;
+            	input += '¬';
+            	break;
         case '2':
         	lastInput.push(input);
-            input += '∧';
-            break;
+            	input += '∧';
+            	break;
         case '3':
         	lastInput.push(input);
-            input += '∨';
-            break;
+            	input += '∨';
+            	break;
         case '4':
         	lastInput.push(input);
-            input += '⇒';
-            break;
+            	input += '⇒';
+            	break;
         case '5':
         	lastInput.push(input);
             input += '⇔';
@@ -140,7 +140,7 @@ function keyTyped() {
         	input += ')';
         	break;
         default:
-            return false;
+        	return false;
     }
 
     draw();
