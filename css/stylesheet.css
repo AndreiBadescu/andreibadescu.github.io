@@ -30,11 +30,11 @@ button:hover {
 	position: fixed;
 	width: calc(88vw - 8px);
 	z-index: 1;
-    background-color: white;
-    border: 4px solid black;
-    border-radius: 20px;
-    font-size: 3vh;
-    font-family: myriad-pro, sans-serif !important;
+    	background-color: white;
+    	border: 4px solid black;
+    	border-radius: 20px;
+    	font-size: 3vh;
+    	font-family: myriad-pro, sans-serif !important;
 	font-weight: 500;
 	font-style: normal;
 }
